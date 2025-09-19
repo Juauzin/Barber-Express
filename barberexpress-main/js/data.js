@@ -50,7 +50,7 @@ const DATA = {
             id: 1,
             name: 'Pablo',
             specialty: 'Especialista em cortes clássicos',
-            rating: 5.0,
+            rating: 5.1,
             image: 'Photos/WhatsApp Image 2025-09-18 at 19.31.14.jpeg',
             experience: '8 anos de experiência'
         },
@@ -58,7 +58,7 @@ const DATA = {
             id: 2,
             name: 'Ruan',
             specialty: 'Expert em cortes modernos e barba',
-            rating: 5.0,
+            rating: 5.1,
             image: 'Photos/WhatsApp Image 2025-09-18 at 19.31.28.jpeg   ',
             experience: '6 anos de experiência'
         },
@@ -66,47 +66,47 @@ const DATA = {
             id: 3,
             name: 'Fábio',
             specialty: 'Especialista em barbas e bigodes',
-            rating: 5.0,
+            rating: 5.1,
             image: 'Photos/WhatsApp Image 2025-09-18 at 19.32.12.jpeg',
             experience: '10 anos de experiência'
         },
         {
             id: 4,
-            name: 'Nome do Grupo',
+            name: 'Lizandro',
             specialty: 'Cortes infantis e adultos',
-            rating: 5.0,
+            rating: 5.1,
             image: 'Photos/WhatsApp Image 2025-09-18 at 19.32.16.jpeg',
             experience: '5 anos de experiência'
         },
         {
             id: 5,
-            name: 'Nome do Grupo',
+            name: 'Giovanna ',
             specialty: 'Tendências e estilos contemporâneos',
-            rating: 5.0,
+            rating: 5.1,
             image: 'Photos/WhatsApp Image 2025-09-18 at 19.36.33.jpeg',
             experience: '7 anos de experiência'
         },
         {
             id: 6,
-            name: 'Nome do Grupo',
+            name: 'Rafael',
             specialty: 'Especialista em cortes clássicos',
-            rating: 5.0,
+            rating: 5.1,
             image: 'Photos/WhatsApp Image 2025-09-18 at 19.34.44.jpeg',
             experience: '8 anos de experiência'
         },
         {
             id: 7,
-            name: 'Nome do Grupo',
+            name: 'Nelson',
             specialty: 'Expert em cortes modernos e barba',
-            rating: 5.0,
+            rating: 5.1,
             image: 'Photos/WhatsApp Image 2025-09-18 at 19.57.51.jpeg',
             experience: '6 anos de experiência'
         },
         {
             id: 8,
-            name: 'Nome do Grupo',
+            name: 'João',
             specialty: 'Especialista em barbas e bigodes',
-            rating: 5.0,
+            rating: 5.1,
             image: 'Photos/WhatsApp Image 2025-09-18 at 20.00.58.jpeg',
             experience: '10 anos de experiência'
         }
