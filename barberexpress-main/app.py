@@ -68,60 +68,68 @@ barbeiros = [
         'experiencia': '8 anos de experiência'
     },
     {
+        'id': 1,
+        'name': 'Pablo',
+        'specialty': 'Especialista em cortes clássicos',
+        'rating': 5.1,
+        'image': 'Photos/WhatsApp Image 2025-09-18 at 19.31.14.jpeg',
+        'experience': '8 anos de experiência'
+    },
+    {
         'id': 2,
-        'nome': 'João Santos',
-        'especialidade': 'Expert em cortes modernos e barba',
-        'avaliacao': 4.8,
-        'imagem': 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=300',
-        'experiencia': '6 anos de experiência'
+        'name': 'Ruan',
+        'specialty': 'Expert em cortes modernos e barba',
+        'rating': 5.1,
+        'image': 'Photos/WhatsApp Image 2025-09-18 at 19.31.28.jpeg   ',
+        'experience': '6 anos de experiência'
     },
     {
         'id': 3,
-        'nome': 'Pedro Costa',
-        'especialidade': 'Especialista em barbas e bigodes',
-        'avaliacao': 4.7,
-        'imagem': 'https://images.pexels.com/photos/1438081/pexels-photo-1438081.jpeg?auto=compress&cs=tinysrgb&w=300',
-        'experiencia': '10 anos de experiência'
+        'name': 'Fábio',
+        'specialty': 'Especialista em barbas e bigodes',
+        'rating': 5.1,
+        'image': 'Photos/WhatsApp Image 2025-09-18 at 19.32.12.jpeg',
+        'experience': '10 anos de experiência'
     },
     {
         'id': 4,
-        'nome': 'Ricardo Oliveira',
-        'especialidade': 'Cortes infantis e adultos',
-        'avaliacao': 4.6,
-        'imagem': 'https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg?auto=compress&cs=tinysrgb&w=300',
-        'experiencia': '5 anos de experiência'
+        'name': 'Lizandro',
+        'specialty': 'Cortes infantis e adultos',
+        'rating': 5.1,
+        'image': 'Photos/WhatsApp Image 2025-09-18 at 19.32.16.jpeg',
+        'experience': '5 anos de experiência'
     },
     {
         'id': 5,
-        'name': 'Lucas Ferreira',
+        'name': 'Giovanna ',
         'specialty': 'Tendências e estilos contemporâneos',
-        'rating': 4.9,
-        'image': 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300',
-        'experience': '7 anos de experiência'
-    },
-    {
-        'id': 5,
-        'name': 'Nome do Grupo',
-        'specialty': 'Tendências e estilos contemporâneos',
-        'rating': 4.9,
-        'image': 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=300',
+        'rating': 5.1,
+        'image': 'Photos/WhatsApp Image 2025-09-18 at 19.36.33.jpeg',
         'experience': '7 anos de experiência'
     },
     {
         'id': 6,
-        'name': 'Nome do Grupo',
+        'name': 'Rafael',
         'specialty': 'Especialista em cortes clássicos',
-        'rating': 4.9,
-        'image': 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=300',
+        'rating': 5.1,
+        'image': 'Photos/WhatsApp Image 2025-09-18 at 19.34.44.jpeg',
         'experience': '8 anos de experiência'
     },
     {
         'id': 7,
-        'name': 'Nome do Grupo',
+        'name': 'Nelson',
         'specialty': 'Expert em cortes modernos e barba',
-        'rating': 4.8,
-        'image': 'https://images.pexels.com/photos/1040880/pexels-photo-1040880.jpeg?auto=compress&cs=tinysrgb&w=300',
+        'rating:' 5.1,
+        'image': 'Photos/WhatsApp Image 2025-09-18 at 19.57.51.jpeg',
         'experience': '6 anos de experiência'
+    },
+    {
+        'id': 8,
+        'name': 'João',
+        'specialty': 'Especialista em barbas e bigodes',
+        'rating:' 5.1,
+        'image': 'Photos/WhatsApp Image 2025-09-18 at 20.00.58.jpeg',
+        'experience': '10 anos de experiência'
     }
 ]
 
