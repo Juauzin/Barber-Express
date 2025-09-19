@@ -61,14 +61,6 @@ servicos = [
 barbeiros = [
     {
         'id': 1,
-        'nome': 'Carlos Silva',
-        'especialidade': 'Especialista em cortes clássicos',
-        'avaliacao': 4.9,
-        'imagem': 'https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=300',
-        'experiencia': '8 anos de experiência'
-    },
-    {
-        'id': 1,
         'name': 'Pablo',
         'specialty': 'Especialista em cortes clássicos',
         'rating': 5.1,
