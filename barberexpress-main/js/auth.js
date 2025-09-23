@@ -174,8 +174,14 @@ class AuthSystem {
             document.getElementById('registerBtn').addEventListener('click', () => {
                 this.openModal('registerModal');
             });
+
+            document.getElementById('botao-externo').addEventListener('click', () => {
+                this.openModal('botao-externo');
+            });
         }
     }
+
+
     
     showDashboard() {
         const mainContent = document.querySelector('.main-content');

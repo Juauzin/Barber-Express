@@ -140,6 +140,10 @@ body {
     display: flex;
     gap: var(--space-4);
 }
+.btn-ia{
+    display: flex;
+    gap: var(--space-4);
+}
 
 .hamburger {
     display: none;

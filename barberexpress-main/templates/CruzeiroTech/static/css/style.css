@@ -1,0 +1,20 @@
+/* Estilo customizado para a barra de rolagem (melhora a aparência) */
+#chat-container::-webkit-scrollbar {
+    width: 8px;
+}
+#chat-container::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+#chat-container::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 20px;
+    border: 2px solid #1f2937;
+}
+.chat-bubble-user {
+    background-color: #4f46e5;
+    color: white;
+}
+.chat-bubble-bot {
+    background-color: #374151;
+    color: white;
+}
