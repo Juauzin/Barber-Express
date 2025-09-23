@@ -176,7 +176,7 @@ class AuthSystem {
             });
 
             document.getElementById('botao-externo').addEventListener('click', () => {
-                this.openModal('botao-externo');
+                window.location.href = 'http://127.0.0.1:5000/', '_blank';
             });
         }
     }
