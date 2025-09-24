@@ -91,6 +91,7 @@ class AuthSystem {
             this.closeModal('loginModal');
             this.updateUI();
             this.showMessage('Login realizado com sucesso!', 'success');
+            return true;
         }
     }
     
@@ -175,12 +176,12 @@ class AuthSystem {
                 this.openModal('registerModal');
             });
 
-            document.getElementById('botao-externo').addEventListener('click', () => {
+       document.getElementById('botao-externo').addEventListener('click', () => {
+                this.openModal('botao-externo');
                 window.location.href = 'http://127.0.0.1:5000/', '_blank';
             });
         }
     }
-
 
     
     showDashboard() {
