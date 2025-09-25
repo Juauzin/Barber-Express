@@ -176,9 +176,12 @@ class AuthSystem {
                 this.openModal('registerModal');
             });
 
-       document.getElementById('botao-externo').addEventListener('click', () => {
+            
+            //botão do bot feito em python
+             document.getElementById('botao-externo').addEventListener('click', () => {
                 this.openModal('botao-externo');
-                window.location.href = 'http://127.0.0.1:5000/', '_blank';
+                // window.location.href = 'http://127.0.0.1:5000/', '_blank';
+                window.open('http://127.0.0.1:5000/', '_blank'); // metodo correto para abrir em uma aba nova
             });
         }
     }
