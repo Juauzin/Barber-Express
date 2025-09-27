@@ -1,5 +1,7 @@
-// Dados simulados do sistema
+// Dados simulados do sistema Barber Express
+// Contém serviços e barbeiros usados no frontend
 const DATA = {
+    // Lista de serviços oferecidos pela barbearia
     services: [
         {
             id: 1,
@@ -44,7 +46,7 @@ const DATA = {
             duration: 90
         }
     ],
-    //Aqui são os barbeiros que aparecem no front
+    // Lista de barbeiros que aparecem no frontend
     barbers: [
         {
             id: 1,

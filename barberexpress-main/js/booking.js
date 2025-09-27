@@ -1,59 +1,66 @@
-// Sistema de agendamento
+// Sistema de agendamento de serviços do Barber Express
+// Gerencia o fluxo de agendamento, etapas, eventos e integração com autenticação
 class BookingSystem {
+    // Construtor: recebe sistema de autenticação
     constructor(authSystem) {
-        this.authSystem = authSystem;
+        this.authSystem = authSystem; // Referência ao sistema de login
         this.currentBooking = {
             service: null,
             barber: null,
             date: null,
             time: null
         };
-        this.currentStep = 1;
-        this.init();
+        this.currentStep = 1; // Etapa atual do agendamento
+        this.init(); // Inicializa eventos
     }
-    
+
+    // Inicializa eventos do sistema de agendamento
     init() {
-        this.bindEvents();
+        this.bindEvents(); // Liga eventos dos botões/modal
     }
-    
+
+    // Liga eventos dos botões e modal de agendamento
     bindEvents() {
-        // CTA Button
+        // Botão principal de chamada para ação (CTA)
         document.getElementById('ctaBtn').addEventListener('click', () => {
             this.openBookingModal();
         });
-        
-        // Booking modal close
+
+        // Botão de fechar modal de agendamento
         document.getElementById('bookingClose').addEventListener('click', () => {
             this.closeBookingModal();
         });
-        
-        // Close modal on outside click
+
+        // Fecha modal ao clicar fora dele
         document.addEventListener('click', (e) => {
             if (e.target.id === 'bookingModal') {
                 this.closeBookingModal();
             }
         });
     }
-    
+
+    // Abre o modal de agendamento, exige login
     openBookingModal() {
         if (!this.authSystem.isLoggedIn()) {
             this.authSystem.showMessage('Faça login para agendar um serviço', 'warning');
             this.authSystem.openModal('loginModal');
             return;
         }
-        
-        this.resetBooking();
-        this.showStep(1);
+
+        this.resetBooking(); // Limpa dados do agendamento
+        this.showStep(1); // Começa na etapa 1
         document.getElementById('bookingModal').classList.add('active');
         document.body.style.overflow = 'hidden';
     }
-    
+
+    // Fecha o modal de agendamento
     closeBookingModal() {
         document.getElementById('bookingModal').classList.remove('active');
         document.body.style.overflow = 'auto';
         this.resetBooking();
     }
-    
+
+    // Reseta dados do agendamento
     resetBooking() {
         this.currentBooking = {
             service: null,
@@ -63,13 +70,15 @@ class BookingSystem {
         };
         this.currentStep = 1;
     }
-    
+
+    // Mostra etapa do fluxo de agendamento
     showStep(step) {
         this.currentStep = step;
-        this.updateStepIndicators();
-        this.renderStepContent();
+        this.updateStepIndicators(); // Atualiza indicadores visuais
+        this.renderStepContent(); // Renderiza conteúdo da etapa
     }
-    
+
+    // Atualiza indicadores visuais das etapas
     updateStepIndicators() {
         const steps = document.querySelectorAll('.step');
         steps.forEach((step, index) => {
@@ -80,22 +89,23 @@ class BookingSystem {
             }
         });
     }
-    
+
+    // Renderiza conteúdo da etapa atual
     renderStepContent() {
         const content = document.getElementById('bookingContent');
-        
+
         switch (this.currentStep) {
             case 1:
-                this.renderServicesStep(content);
+                this.renderServicesStep(content); // Escolha de serviço
                 break;
             case 2:
-                this.renderBarbersStep(content);
+                this.renderBarbersStep(content); // Escolha de barbeiro
                 break;
             case 3:
-                this.renderDateTimeStep(content);
+                this.renderDateTimeStep(content); // Escolha de data/hora
                 break;
             case 4:
-                this.renderConfirmationStep(content);
+                this.renderConfirmationStep(content); // Confirmação
                 break;
         }
     }

@@ -1,25 +1,30 @@
-// Sistema de autenticação
+// Sistema de autenticação principal do sistema Barber Express
+// Gerencia login, cadastro, logout, UI e eventos do usuário
 class AuthSystem {
+    // Construtor: carrega usuário salvo e inicializa eventos/UI
     constructor() {
-        this.currentUser = this.loadUser();
-        this.init();
+        this.currentUser = this.loadUser(); // Usuário atual, se existir
+        this.init(); // Inicializa eventos e interface
     }
     
+    // Inicializa eventos e atualiza interface
     init() {
-        this.bindEvents();
-        this.updateUI();
+        this.bindEvents(); // Liga eventos dos botões/modais
+        this.updateUI(); // Atualiza UI conforme login
     }
     
+    // Liga todos os eventos dos botões e formulários
     bindEvents() {
-        // Modal events
+        // Eventos dos botões de abrir modais
         document.getElementById('loginBtn').addEventListener('click', () => {
-            this.openModal('loginModal');
+            this.openModal('loginModal'); // Abre modal de login
         });
         
         document.getElementById('registerBtn').addEventListener('click', () => {
-            this.openModal('registerModal');
+            this.openModal('registerModal'); // Abre modal de cadastro
         });
         
+        // Eventos para fechar modais
         document.getElementById('loginClose').addEventListener('click', () => {
             this.closeModal('loginModal');
         });
@@ -28,7 +33,7 @@ class AuthSystem {
             this.closeModal('registerModal');
         });
         
-        // mudar entre login e register
+        // Troca entre login e cadastro
         document.getElementById('switchToRegister').addEventListener('click', (e) => {
             e.preventDefault();
             this.closeModal('loginModal');
@@ -41,18 +46,18 @@ class AuthSystem {
             this.openModal('loginModal');
         });
         
-        // Form submissions
+        // Submissão dos formulários de login e cadastro
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            this.handleLogin(e);
+            this.handleLogin(e); // Processa login
         });
         
         document.getElementById('registerForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            this.handleRegister(e);
+            this.handleRegister(e); // Processa cadastro
         });
         
-        // Close modal on outside click
+        // Fecha modal ao clicar fora dele
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('modal')) {
                 this.closeModal(e.target.id);
@@ -60,53 +65,57 @@ class AuthSystem {
         });
     }
     
+    // Abre um modal pelo ID
     openModal(modalId) {
         const modal = document.getElementById(modalId);
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        modal.classList.add('active'); // Mostra modal
+        document.body.style.overflow = 'hidden'; // Impede scroll
     }
     
+    // Fecha um modal pelo ID
     closeModal(modalId) {
         const modal = document.getElementById(modalId);
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        modal.classList.remove('active'); // Esconde modal
+        document.body.style.overflow = 'auto'; // Libera scroll
     }
     
+    // Processa o login do usuário
     handleLogin(e) {
         const formData = new FormData(e.target);
         const email = document.getElementById('loginEmail').value;
         const password = document.getElementById('loginPassword').value;
         
-        // Simulação de login
+        // Simulação de login (poderia ser integrado com backend)
         if (email && password) {
             const user = {
-                id: Date.now(),
+                id: Date.now(), // Gera ID fake
                 name: 'Usuário Teste',
                 email: email,
                 phone: '(11) 99999-9999'
             };
             
-            this.saveUser(user);
+            this.saveUser(user); // Salva no localStorage
             this.currentUser = user;
             this.closeModal('loginModal');
             this.updateUI();
             this.showMessage('Login realizado com sucesso!', 'success');
-            return true;
         }
     }
     
+    // Processa o cadastro de novo usuário
     handleRegister(e) {
         const name = document.getElementById('registerName').value;
         const email = document.getElementById('registerEmail').value;
         const phone = document.getElementById('registerPhone').value;
         const password = document.getElementById('registerPassword').value;
         const confirmPassword = document.getElementById('registerConfirmPassword').value;
-        // verifica se as senhas estão iguais
+        // Verifica se as senhas coincidem
         if (password !== confirmPassword) {
             this.showMessage('As senhas não coincidem!', 'error');
             return;
         }
         
+        // Simulação de cadastro
         if (name && email && phone && password) {
             const user = {
                 id: Date.now(),
@@ -115,7 +124,7 @@ class AuthSystem {
                 phone: phone
             };
             
-            this.saveUser(user);
+            this.saveUser(user); // Salva no localStorage
             this.currentUser = user;
             this.closeModal('registerModal');
             this.updateUI();
@@ -123,29 +132,33 @@ class AuthSystem {
         }
     }
     
+    // Faz logout do usuário
     logout() {
-        localStorage.removeItem('barberExpressUser');
+        localStorage.removeItem('barberExpressUser'); // Remove do localStorage
         this.currentUser = null;
         this.updateUI();
         this.showMessage('Logout realizado com sucesso!', 'success');
-        window.location.hash = '#home';
-        
+        window.location.hash = '#home'; // Redireciona para home
     }
 
     
+    // Salva usuário no localStorage
     saveUser(user) {
         localStorage.setItem('barberExpressUser', JSON.stringify(user));
     }
     
+    // Carrega usuário do localStorage
     loadUser() {
         const userData = localStorage.getItem('barberExpressUser');
         return userData ? JSON.parse(userData) : null;
     }
     
+    // Atualiza a interface de autenticação conforme o estado do usuário
     updateUI() {
         const navAuth = document.querySelector('.nav-auth');
         
         if (this.currentUser) {
+            // Usuário logado: mostra saudação e botões de dashboard/logout
             navAuth.innerHTML = `
                 <span class="user-greeting">Olá, ${this.currentUser.name.split(' ')[0]}</span>
                 <button class="btn-secondary" id="dashboardBtn">Minha Agenda</button>
@@ -153,7 +166,7 @@ class AuthSystem {
                 window.location.hash = '#home';
                 ;
             
-            // Bind new events
+            // Liga eventos dos botões
             document.getElementById('logoutBtn').addEventListener('click', () => {
                 this.logout();
             });
@@ -162,12 +175,13 @@ class AuthSystem {
                 this.showDashboard();
             });
         } else {
+            // Usuário não logado: mostra botões de login/cadastro
             navAuth.innerHTML = `
                 <button class="btn-secondary" id="loginBtn">Entrar</button>
                 <button class="btn-primary" id="registerBtn">Cadastrar</button>
             `;
             
-            // Re-bind events
+            // Liga eventos dos botões
             document.getElementById('loginBtn').addEventListener('click', () => {
                 this.openModal('loginModal');
             });
@@ -176,17 +190,18 @@ class AuthSystem {
                 this.openModal('registerModal');
             });
 
-            
-            //botão do bot feito em python
-             document.getElementById('botao-externo').addEventListener('click', () => {
+            // Botão para abrir chatbot externo (feito em Python)
+            document.getElementById('botao-externo').addEventListener('click', () => {
                 this.openModal('botao-externo');
                 // window.location.href = 'http://127.0.0.1:5000/', '_blank';
-                window.open('http://127.0.0.1:5000/', '_blank'); // metodo correto para abrir em uma aba nova
+
+                window.open('http://127.0.0.1:5000/', '_blank'); // método correto para abrir em uma aba nova
             });
         }
     }
 
     
+    // Mostra o dashboard do usuário logado
     showDashboard() {
         const mainContent = document.querySelector('.main-content');
         mainContent.innerHTML = `
@@ -243,17 +258,18 @@ class AuthSystem {
             </div>
         `;
         
-        // Add event for new booking
+        // Evento para novo agendamento
         document.getElementById('newBookingBtn').addEventListener('click', () => {
             window.bookingSystem.openBookingModal();
         });
         
-        // Update navbar
+        // Atualiza navbar para modo usuário
         document.querySelector('.navbar').classList.add('user-nav');
     }
     
+    // Exibe uma mensagem temporária na tela (sucesso, erro, info)
     showMessage(message, type = 'info') {
-        // Create message element
+        // Cria elemento de mensagem
         const messageEl = document.createElement('div');
         messageEl.className = `message message-${type}`;
         messageEl.textContent = message;
@@ -274,7 +290,7 @@ class AuthSystem {
         
         document.body.appendChild(messageEl);
         
-        // Remove message after 3 seconds
+        // Remove mensagem após 3 segundos
         setTimeout(() => {
             messageEl.style.animation = 'slideOutRight 0.3s ease';
             setTimeout(() => {
@@ -283,16 +299,18 @@ class AuthSystem {
         }, 3000);
     }
     
+    // Retorna se o usuário está logado
     isLoggedIn() {
         return this.currentUser !== null;
     }
     
+    // Retorna o usuário atual
     getCurrentUser() {
         return this.currentUser;
     }
 }
 
-// Adicionar animações para mensagens
+// Adiciona estilos para animações de mensagens e saudação do usuário
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideInRight {

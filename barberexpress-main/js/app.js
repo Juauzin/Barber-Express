@@ -1,59 +1,64 @@
-// Aplicação principal
+// Aplicação principal do Barber Express
+// Gerencia autenticação, agendamento, navegação e carregamento de dados
 class BarberExpressApp {
+    // Construtor: inicializa sistemas de autenticação e agendamento
     constructor() {
-        this.authSystem = new AuthSystem();
-        this.bookingSystem = new BookingSystem(this.authSystem);
-        this.init();
+        this.authSystem = new AuthSystem(); // Sistema de login/cadastro
+        this.bookingSystem = new BookingSystem(this.authSystem); // Sistema de agendamento
+        this.init(); // Inicializa eventos e conteúdo
     }
-    
+
+    // Inicializa eventos e carrega conteúdo
     init() {
-        this.bindEvents();
-        this.loadContent();
-        this.setupSmoothScrolling();
+        this.bindEvents(); // Liga eventos de navegação e botões
+        this.loadContent(); // Carrega serviços e barbeiros
+        this.setupSmoothScrolling(); // Ativa navegação suave
     }
-    
+
+    // Liga eventos de navegação, menu e cards
     bindEvents() {
-        // Navigation
+        // Eventos de navegação (links do menu)
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                this.handleNavigation(e.target);
+                this.handleNavigation(e.target); // Navega para seção
             });
         });
-        
-        // Hamburger menu
+
+        // Evento do menu hambúrguer (mobile)
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
-        
+
         hamburger.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
-        
-        // Service cards click to book
+
+        // Clique em cards de serviço abre modal de agendamento
         document.addEventListener('click', (e) => {
             if (e.target.closest('.service-card')) {
                 this.bookingSystem.openBookingModal();
             }
         });
-        
-        // Barber cards click to book
+
+        // Clique em cards de barbeiro abre modal de agendamento
         document.addEventListener('click', (e) => {
             if (e.target.closest('.barber-card')) {
                 this.bookingSystem.openBookingModal();
             }
         });
     }
-    
+
+    // Navegação entre seções da página
     handleNavigation(link) {
-        // Update active link
+        // Atualiza link ativo
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
         link.classList.add('active');
-        
-        // Smooth scroll to section
+
+        // Scroll suave até a seção
         const targetId = link.getAttribute('href').substring(1);
         const targetSection = document.getElementById(targetId);
-        
+
         if (targetSection) {
             targetSection.scrollIntoView({
                 behavior: 'smooth',
@@ -61,20 +66,20 @@ class BarberExpressApp {
             });
         }
     }
-    
+
+    // Atualiza link ativo conforme o scroll
     setupSmoothScrolling() {
-        // Update active nav link on scroll
         const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
-        
+
         const updateActiveLink = () => {
             const scrollPos = window.scrollY + 100;
-            
+
             sections.forEach(section => {
                 const top = section.offsetTop;
                 const bottom = top + section.offsetHeight;
                 const id = section.getAttribute('id');
-                
+
                 if (scrollPos >= top && scrollPos <= bottom) {
                     navLinks.forEach(link => link.classList.remove('active'));
                     const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
@@ -84,19 +89,21 @@ class BarberExpressApp {
                 }
             });
         };
-        
+
         window.addEventListener('scroll', updateActiveLink);
     }
-    
+
+    // Carrega dados de serviços e barbeiros
     loadContent() {
         this.loadServices();
         this.loadBarbers();
     }
-    
+
+    // Renderiza os serviços na tela
     loadServices() {
         const services = getServices();
         const container = document.getElementById('servicesGrid');
-        
+
         container.innerHTML = services.map(service => `
             <div class="service-card" data-service-id="${service.id}">
                 <h3>${service.name}</h3>
